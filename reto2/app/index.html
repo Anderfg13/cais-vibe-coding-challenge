@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vethub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="cab">
+    <div class="cab-in">
+      <a class="marca" href="#/">🐾 Vethub</a>
+      <p>Pacientes, responsables y visitas</p>
+    </div>
+  </header>
+
+  <div id="aviso" class="aviso" role="alert" hidden></div>
+
+  <main>
+    <div id="vista-inicio" class="rejilla">
+      <section class="card">
+        <h2>1. Registrar paciente</h2>
+        <p class="ayuda">Cada mascota necesita al menos dos responsables. Si una persona ya está registrada, escribe su nombre y se vinculará a su misma ficha.</p>
+        <form id="form-paciente" novalidate>
+          <div class="campos">
+            <label>Nombre de la mascota <input id="p-nombre" required maxlength="50" autocomplete="off"></label>
+            <label>Especie
+              <select id="p-especie" required>
+                <option value="">Elige…</option>
+                <option>Perro</option><option>Gato</option><option>Ave</option>
+                <option>Conejo</option><option>Otro</option>
+              </select>
+            </label>
+          </div>
+          <fieldset class="responsables">
+            <legend>Responsables</legend>
+            <div id="resp-lista"></div>
+            <button type="button" id="btn-add-resp" class="secundario pequeno">+ Añadir otro responsable</button>
+          </fieldset>
+          <datalist id="lista-responsables"></datalist>
+          <button type="submit" class="principal">Registrar paciente</button>
+        </form>
+        <p id="msg-paciente" class="msg" role="status"></p>
+      </section>
+
+      <section class="card">
+        <div class="cabecera-seccion">
+          <h2>2. Pacientes registrados</h2>
+          <label class="buscador">Buscar
+            <input id="buscar" type="search" placeholder="Nombre de la mascota o del responsable" autocomplete="off">
+          </label>
+        </div>
+        <div class="tabla-scroll"><table>
+          <thead><tr><th>Mascota</th><th>Especie</th><th>Responsables</th><th class="num">Visitas</th><th></th></tr></thead>
+          <tbody id="tabla-pacientes"></tbody>
+        </table></div>
+        <p id="sin-pacientes" class="vacio"></p>
+      </section>
+
+      <section class="card">
+        <h2>3. Visitas</h2>
+        <form id="form-visita" novalidate>
+          <label>Paciente <select id="v-paciente" required></select></label>
+          <label>Fecha <input type="date" id="v-fecha" required></label>
+          <label>Motivo <input id="v-motivo" required maxlength="100" placeholder="Ej: vacuna, control…" autocomplete="off"></label>
+          <label>Notas <input id="v-notas" maxlength="300" placeholder="Opcional" autocomplete="off"></label>
+          <button type="submit" class="principal">Registrar visita</button>
+        </form>
+        <p id="msg-visita" class="msg" role="status"></p>
+        <h3 id="titulo-historial">Historial</h3>
+        <ul id="historial" class="linea-tiempo"></ul>
+      </section>
+    </div>
+
+    <div id="vista-ficha" hidden></div>
+  </main>
+
+  <footer><button id="btn-demo" class="secundario">Cargar datos de ejemplo</button></footer>
+  <script src="app.js"></script>
+</body>
+</html>

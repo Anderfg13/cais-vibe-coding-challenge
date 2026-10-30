@@ -1,0 +1,14 @@
+{
+  "name": "vethub-reto2",
+  "version": "2.0.0",
+  "private": true,
+  "description": "App web para el control de pacientes y visitas de una clínica veterinaria de barrio (CAIS 2026, semana 12).",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/e2e.js",
+    "test:instalar": "npx playwright install chromium"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}
